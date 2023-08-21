@@ -17,6 +17,12 @@ app.use("/creations", creationsRouter);
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
 
+const categoriesRouter = require("./routes/categories");
+app.use("/categories", categoriesRouter);
+
+const typesRouter = require("./routes/types");
+app.use("/types", typesRouter);
+
 app.listen(port, () =>
   console.log(`Server running at http://localhost:${port}`)
 );
