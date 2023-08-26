@@ -5,12 +5,25 @@ const config = require("../knexfile.js");
 const knex = require("knex")(config);
 
 const { v4: uuidv4 } = require("uuid");
+const { type } = require("@testing-library/user-event/dist/type/index.js");
 
 router
   .route("/")
   // Get list of challenges
   .get((req, res) => {
-    knex("challenge")
+    knex
+    .select(
+      "challenge.id",
+      "user.username",
+      "challenge.name as challenge_name",
+      "category.name as category",
+      "type.name as type",
+      "challenge.description"
+    )
+    .from("challenge")
+    .join("user", 'user.id', 'challenge.created_by_id')
+    .join("type", 'type.id', 'challenge.type_id')
+    .join("category", "category.id", "type.category_id")
     .then((challenges) => {
         res.status(200).json(challenges);
     })
