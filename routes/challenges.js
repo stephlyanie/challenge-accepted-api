@@ -76,4 +76,30 @@ router.put("/:id/edit", (req, res) => {});
 // Delete a single challenge
 router.delete("/:id/delete", (req, res) => {});
 
+// Get list of creations from a single challenge
+router.route("/:id/creations")
+  .get((req, res) => {
+    knex
+    .select(
+      "creation.id as creation_id",
+      "challenge.id as challenge_id",
+      "user.username",
+      "creation.name as creation_name",
+      "creation.image_url"
+    )
+    .from("creation")
+    .join("user", 'user.id', 'creation.created_by_id')
+    .join("challenge", 'challenge.id', 'creation.challenge_id')
+    .where(`challenge.id`, req.params.id)
+    .then((creations) => {
+        res.status(200).json(creations);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(400).json({
+            message: "Error getting challenges"
+        })
+    })
+  });
+
 module.exports = router;
