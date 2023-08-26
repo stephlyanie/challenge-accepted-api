@@ -44,10 +44,29 @@ router
   .route("/:id")
   // Get details of a single challenge
   .get((req, res) => {
-    knex("challenge")
-    .where(`id`, req.params.id)
-    .then((challenge) => {
-        res.status(200).json(challenge);
+    knex
+    .select(
+      "challenge.id",
+      "user.username",
+      "challenge.name",
+      "category.name as category",
+      "type.name as type",
+      "challenge.description",
+      "challenge.image_url"
+    )
+    .from("challenge")
+    .join("user", 'user.id', 'challenge.created_by_id')
+    .join("type", 'type.id', 'challenge.type_id')
+    .join("category", "category.id", "type.category_id")
+    .where(`challenge.id`, req.params.id)
+    .then((creations) => {
+        res.status(200).json(creations);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(400).json({
+            message: "Error getting creations"
+        });
     })
   });
 
