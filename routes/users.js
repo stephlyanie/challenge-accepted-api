@@ -29,7 +29,19 @@ router
 router
   .route("/:id")
   // Get details of a single user
-  .get((req, res) => {});
+  .get((req, res) => {
+      knex("user")
+      .where(`user.id`, req.params.id)
+      .then((users) => {
+          res.status(200).json(users);
+      })
+      .catch((error) => {
+          console.log(error);
+          res.status(400).json({
+              message: "Error getting users"
+          })
+      })
+  });
 
 // Edit details of a single user
 router.put("/:id/edit", (req, res) => {});
