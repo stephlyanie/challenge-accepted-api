@@ -18,7 +18,8 @@ router
       "challenge.name as challenge_name",
       "category.name as category",
       "type.name as type",
-      "challenge.description"
+      "challenge.description",
+      "challenge.image_url"
     )
     .from("challenge")
     .join("user", 'user.id', 'challenge.created_by_id')
