@@ -8,7 +8,7 @@ exports.seed = async function(knex) {
   await knex('creation').insert([
     {
       id: "1606CAC9-F0D8-4D01-8AF4-049AE9441C17",
-      challenge_id: "88384958-08B7-4F95-B885-FC47A2F7AF56",
+      challenge_id: "C2EA9F0A-93F2-48AE-865A-DFB66F4C5C90",
       name: "Lemon Tart with Fresh Berries",
       description: "A zesty lemon curd atop a pâte sucrée crust with fresh seasonal berries.",
       created_by_id: "5E1A0766-021C-43F9-9012-46ECE7BAFE90",

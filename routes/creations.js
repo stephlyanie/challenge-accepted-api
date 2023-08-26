@@ -10,7 +10,22 @@ router
   .route("/")
   // Get list of creations
   .get((req, res) => {
-    knex("creation")
+    knex
+    .select(
+      "creation.id",
+      "user.username",
+      "creation.name",
+      "challenge.name as challenge",
+      "category.name as category",
+      "type.name as type",
+      "creation.description",
+      "creation.image_url"
+    )
+    .from("creation")
+    .join("user", 'user.id', 'creation.created_by_id')
+    .join("challenge", "challenge.id", "creation.challenge_id")
+    .join("type", 'type.id', 'challenge.type_id')
+    .join("category", "category.id", "type.category_id")
     .then((creations) => {
         res.status(200).json(creations);
     })

@@ -15,7 +15,7 @@ router
     .select(
       "challenge.id",
       "user.username",
-      "challenge.name as challenge_name",
+      "challenge.name",
       "category.name as category",
       "type.name as type",
       "challenge.description",
