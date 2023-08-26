@@ -38,12 +38,40 @@ router
   })
 
   // Create/post a new creation
-  .post((req, res) => {});
+  .post((req, res) => {
+  });
 
 router
   .route("/:id")
   // Get details of a single creation
-  .get((req, res) => {});
+  .get((req, res) => {
+    knex
+    .select(
+      "creation.id",
+      "user.username",
+      "creation.name",
+      "challenge.name as challenge",
+      "category.name as category",
+      "type.name as type",
+      "creation.description",
+      "creation.image_url"
+    )
+    .from("creation")
+    .join("user", 'user.id', 'creation.created_by_id')
+    .join("challenge", "challenge.id", "creation.challenge_id")
+    .join("type", 'type.id', 'challenge.type_id')
+    .join("category", "category.id", "type.category_id")
+    .where(`creation.id`, req.params.id)
+    .then((creations) => {
+        res.status(200).json(creations);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(400).json({
+            message: "Error getting creations"
+        });
+    })
+  });
 
 // Edit details of a single creation
 router.put("/:id/edit", (req, res) => {});
