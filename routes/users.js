@@ -80,5 +80,34 @@ router
     })
   });
 
+  router
+  .route("/:id/challenges")
+  // Get details of a single user
+  .get((req, res) => {
+    knex
+    .select(
+      "user.id",
+      "challenge.id as challenge_id",
+      "challenge.name",
+      "challenge.image_url",
+      "category.name as category",
+      "type.name as type"
+    )
+    .from("challenge")
+    .join("user", 'user.id', 'challenge.created_by_id')
+    .join("type", 'type.id', 'challenge.type_id')
+    .join("category", "category.id", "type.category_id")
+    .where(`user.id`, req.params.id)
+    .then((creations) => {
+        res.status(200).json(creations);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(400).json({
+            message: "Error getting challenges"
+        })
+    })
+  });
+
 module.exports = router;
 
