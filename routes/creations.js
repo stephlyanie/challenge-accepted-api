@@ -13,6 +13,7 @@ router
     knex
     .select(
       "creation.id",
+      "creation.created_by_id",
       "user.username",
       "creation.name",
       "challenge.name as challenge",
@@ -48,6 +49,7 @@ router
     knex
     .select(
       "creation.id",
+      "creation.created_by_id",
       "user.username",
       "creation.name",
       "challenge.name as challenge",
