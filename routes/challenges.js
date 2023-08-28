@@ -5,7 +5,6 @@ const config = require("../knexfile.js");
 const knex = require("knex")(config);
 
 const { v4: uuidv4 } = require("uuid");
-const { type } = require("@testing-library/user-event/dist/type/index.js");
 
 router
   .route("/")
@@ -38,7 +37,20 @@ router
 
 
   // Create/post a new challenge
-  .post((req, res) => {});
+  .post((req, res) => {
+    knex("challenge")
+      .insert({
+        id: uuidv4(),
+        name:req.body.name,
+        description: req.body.description,
+        created_by_id: req.body.created_by_id,
+        type_id: req.body.type_id,
+        image_url: "https://images.unsplash.com/photo-1510861320402-285a6c7639ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2228&q=80"
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  });
 
 router
   .route("/:id")
