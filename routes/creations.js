@@ -40,6 +40,18 @@ router
 
   // Create/post a new creation
   .post((req, res) => {
+    knex("creation")
+      .insert({
+        id: uuidv4(),
+        name:req.body.name,
+        description: req.body.description,
+        created_by_id: req.body.created_by_id,
+        challenge_id: req.body.challenge_id,
+        image_url: "https://images.unsplash.com/flagged/photo-1561668038-2742fcef75d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   });
 
 router
