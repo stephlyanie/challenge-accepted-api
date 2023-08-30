@@ -31,11 +31,37 @@ router
   // Get details of a single category
   .get((req, res) => {});
 
+
 // Edit details of a single category
 router.put("/:id/edit", (req, res) => {});
 
 // Delete a single category
 router.delete("/:id/delete", (req, res) => {});
+
+router
+.route("/:id/types")
+// Get details of a single category
+.get((req, res) => {
+  knex
+  .select(
+    "category.id as category_id",
+    "category.name as category_name",
+    "type.id as type_id",
+    "type.name as type_name",
+  )
+  .from("category")
+  .join("type", 'type.category_id', 'category.id')
+  .where(`category.id`, req.params.id)
+  .then((creations) => {
+      res.status(200).json(creations);
+  })
+  .catch((error) => {
+      console.log(error);
+      res.status(400).json({
+          message: "Error getting challenges"
+      })
+  })
+});
 
 module.exports = router;
 
