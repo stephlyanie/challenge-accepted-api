@@ -46,8 +46,8 @@ router
   .select(
     "category.id as category_id",
     "category.name as category_name",
-    "type.id as type_id",
-    "type.name as type_name",
+    "type.id as id",
+    "type.name as name",
   )
   .from("category")
   .join("type", 'type.category_id', 'category.id')
