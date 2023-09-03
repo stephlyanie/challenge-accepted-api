@@ -83,7 +83,23 @@ router
   });
 
 // Edit details of a single challenge
-router.put("/:id/edit", (req, res) => {});
+router.put("/:id", (req, res) => {
+  knex("challenge")
+  .update({
+    name: req.body.name,
+    description: req.body.description,
+    created_by_id: req.body.created_by_id,
+    type_id: req.body.type_id
+  })
+  .where('id', req.params.id)
+  .then(()=> {
+    res.status(200).send('Challenge edited successfully');
+  })
+  .catch((error)=>{
+    res.status(404).send(`Error editing the challenge`);
+    console.error(error);
+  })
+});
 
 // Delete a single challenge
 router.delete("/:id/delete", (req, res) => {});
