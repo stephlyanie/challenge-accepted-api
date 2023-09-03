@@ -88,7 +88,23 @@ router
   });
 
 // Edit details of a single creation
-router.put("/:id/edit", (req, res) => {});
+router.put("/:id", (req, res) => {
+  knex("creation")
+  .update({
+    name: req.body.name,
+    description: req.body.description,
+    created_by_id: req.body.created_by_id,
+    challenge_id: req.body.challenge_id
+  })
+  .where('id', req.params.id)
+  .then(()=> {
+    res.status(200).send('Creation edited successfully');
+  })
+  .catch((error)=>{
+    res.status(404).send(`Error editing the creation`);
+    console.error(error);
+  })
+});
 
 // Delete a single creation
 router.delete("/:id/delete", (req, res) => {});
