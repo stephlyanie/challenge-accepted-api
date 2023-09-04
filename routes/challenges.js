@@ -14,6 +14,7 @@ router
     .select(
       "challenge.id",
       "user.username",
+      "user.image_url as profile_pic",
       "challenge.name",
       "category.name as category",
       "type.name as type",
@@ -60,6 +61,7 @@ router
     .select(
       "challenge.id",
       "user.username",
+      "user.image_url as profile_pic",
       "challenge.name",
       "category.name as category",
       "type.name as type",
@@ -112,6 +114,7 @@ router.route("/:id/creations")
       "creation.id as creation_id",
       "challenge.id as challenge_id",
       "user.username",
+      "user.image_url as profile_pic",
       "creation.name as creation_name",
       "creation.image_url"
     )
