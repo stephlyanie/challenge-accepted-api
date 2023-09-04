@@ -56,6 +56,7 @@ router
     knex
     .select(
       "user.id",
+      "user.image_url as profile_pic",
       "creation.id as creation_id",
       "challenge.name as challenge",
       "creation.name as creation_name",
@@ -87,6 +88,7 @@ router
     knex
     .select(
       "user.id",
+      "user.image_url as profile_pic",
       "challenge.id as challenge_id",
       "challenge.name",
       "challenge.image_url",
