@@ -55,11 +55,11 @@ router
   .get((req, res) => {
     knex
     .select(
-      "user.id",
+      "user.id as user_id",
       "user.image_url as profile_pic",
-      "creation.id as creation_id",
+      "creation.id",
       "challenge.name as challenge",
-      "creation.name as creation_name",
+      "creation.name",
       "creation.image_url",
       "category.name as category",
       "type.name as type"
@@ -87,9 +87,9 @@ router
   .get((req, res) => {
     knex
     .select(
-      "user.id",
+      "user.id as user_id",
       "user.image_url as profile_pic",
-      "challenge.id as challenge_id",
+      "challenge.id",
       "challenge.name",
       "challenge.image_url",
       "category.name as category",

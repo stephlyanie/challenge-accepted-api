@@ -113,6 +113,7 @@ router.route("/:id/creations")
     .select(
       "creation.id as creation_id",
       "challenge.id as challenge_id",
+      "challenge.name as challenge",
       "user.username",
       "user.image_url as profile_pic",
       "creation.name as creation_name",
