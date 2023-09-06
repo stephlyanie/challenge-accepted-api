@@ -9,7 +9,7 @@ exports.up = function(knex) {
           .uuid('challenge_id')
           .references('challenge.id')
           .onUpdate('CASCADE')
-          .onDelete('CASCADE');
+          .onDelete('SET NULL');
         table.string('name').notNullable();
         table.string('description').notNullable();
         table
