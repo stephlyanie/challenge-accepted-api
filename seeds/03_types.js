@@ -7,6 +7,11 @@ exports.seed = async function(knex) {
   await knex('type').del()
   await knex('type').insert([
     {
+      id: "A66FF24C-A1DA-4B59-923D-7300CB952D64",
+      name: "Random",
+      category_id: "8D936DED-A8CB-4B5D-96D1-74F165D5A2AA"
+    },
+    {
       id: "345E5ED3-1D44-493F-B4F9-0820D7FF6DEF",
       name: "Cake",
       category_id: "8D936DED-A8CB-4B5D-96D1-74F165D5A2AA"
