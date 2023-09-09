@@ -42,9 +42,12 @@ router
 
   // Create/post a new creation
   .post((req, res) => {
+    // Generate new Id and save in variable
+    const newId = uuidv4();
+  
     knex("creation")
       .insert({
-        id: uuidv4(),
+        id: newId,
         name: req.body.name,
         description: req.body.description,
         created_by_id: req.body.created_by_id,
@@ -55,6 +58,9 @@ router
       .catch((error) => {
         console.log(error);
       });
+
+      // Send new Id in response
+      res.send(newId)
   });
 
 router
