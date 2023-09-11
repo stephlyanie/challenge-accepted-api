@@ -55,8 +55,8 @@ router
         console.log(error);
       });
 
-      // Send new Id in response
-      res.send(newId)
+    // Send new Id in response
+    res.send(newId);
   });
 
 router
@@ -111,16 +111,23 @@ router.put("/:id", (req, res) => {
 
 // Delete a single challenge
 router.delete("/:id", (req, res) => {
-  knex("challenge")
-    .where("id", req.params.id)
-    .del()
+  knex("creation")
+    .update({
+      challenge_id: "E55AB825-9FDE-438C-984F-2C34FE04CF95",
+    })
+    .where("challenge_id", req.params.id)
     .then(() => {
-      res.status(204).json({"message": "Challenge successfully deleted."})
+      return knex("challenge")
+      .where("id", req.params.id)
+      .del()
     })
-    .catch(() => {
-      res.status(500).json({"message": "Error deleting challenge."})
+    .then(() => {
+      res.status(204).json({ message: "Challenge successfully deleted." });
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error deleting challenge." });
       console.error(error);
-    })
+    });
 });
 
 // Get list of creations from a single challenge

@@ -7,10 +7,9 @@ exports.up = function(knex) {
         table.uuid('id').primary();
         table
           .uuid('challenge_id')
-          .defaultTo('E55AB825-9FDE-438C-984F-2C34FE04CF95')
           .references('challenge.id')
           .onUpdate('CASCADE')
-          .onDelete('SET DEFAULT');
+          .onDelete('SET NULL');
         table.string('name').notNullable();
         table.string('description').notNullable();
         table
