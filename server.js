@@ -1,10 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const mysql = require("mysql")
 
 require("dotenv").config();
 // const mysql = require('mysql');
 
-const port = process.env.PORT || 3306;
+const port = process.env.PORT || 8080;
+
+
 // const connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 const app = express();
