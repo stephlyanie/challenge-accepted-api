@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 require("dotenv").config();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3306;
 
 const app = express();
 app.use(cors());
@@ -24,7 +24,7 @@ const typesRouter = require("./routes/types");
 app.use("/types", typesRouter);
 
 app.listen(port, () =>
-  console.log(`Server running at http://localhost:${port}`)
+  console.log(`Server running`)
 );
 
 // Run the following commands to start the server:
