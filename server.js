@@ -1,14 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const mysql = require("mysql")
 
 require("dotenv").config();
-// const mysql = require('mysql');
 
 const port = process.env.PORT || 8080;
-
-
-// const connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 const app = express();
 app.use(cors());
@@ -33,7 +28,7 @@ app.use("/types", typesRouter);
 
 
 app.listen(port, () =>
-  console.log(`Server running`)
+  console.log(`Server running on http://localhost:8080`)
 );
 
 // Run the following commands to start the server:
