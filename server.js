@@ -2,7 +2,11 @@ const express = require("express");
 const cors = require("cors");
 
 require("dotenv").config();
-const port = process.env.PORT || 3306;
+const mysql = require('mysql');
+
+// const port = process.env.PORT || 3306;
+const connection = mysql.createConnection(process.env.JAWSDB_URL);
+connection.connect();
 
 const app = express();
 app.use(cors());
@@ -23,7 +27,7 @@ app.use("/categories", categoriesRouter);
 const typesRouter = require("./routes/types");
 app.use("/types", typesRouter);
 
-app.listen(port, () =>
+app.listen(connection, () =>
   console.log(`Server running`)
 );
 
