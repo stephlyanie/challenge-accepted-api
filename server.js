@@ -26,3 +26,6 @@ app.use("/types", typesRouter);
 app.listen(port, () =>
   console.log(`Server running at http://localhost:${port}`)
 );
+
+// Run the following commands to start the server:
+// node server.js
