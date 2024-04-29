@@ -13,7 +13,7 @@ require('dotenv').config()
             pool: {
                 max: 3,
                 min: 0,
-                acquireTimeout: 60 * 1000,
+                // acquireTimeout: 60 * 1000,
                 propagateCreateError: false
             }
         }
