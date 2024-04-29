@@ -11,9 +11,10 @@ require('dotenv').config()
             database: process.env.DB_NAME,
             charset: "utf8",
             pool: {
-                max: 3,
+                max: 1,
                 min: 0,
-                // acquireTimeout: 60 * 1000,
+                acquireTimeout: 60 * 1000,
+                idleTimeoutMillis: 600000,
                 propagateCreateError: false
             }
         }
