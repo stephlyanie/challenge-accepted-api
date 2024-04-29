@@ -28,7 +28,7 @@ app.use("/types", typesRouter);
 
 
 app.listen(port, () =>
-  console.log(`Server running on http://localhost:8080`)
+  console.log(`Server running`)
 );
 
 // Run the following commands to start the server:

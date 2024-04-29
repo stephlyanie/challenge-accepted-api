@@ -5,10 +5,10 @@ require('dotenv').config()
         client: "mysql",
         connection: {
             host: process.env.JAWSDB_URL,
-            port: 3306,
+            port: process.env.PORT,
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
-            database: process.env.DBNAME,
+            database: process.env.DB_NAME,
             charset: "utf8"
         }
     }
