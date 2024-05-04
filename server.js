@@ -3,7 +3,7 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-const port = process.env.PORT || 8080;
+// const port = process.env.PORT || 8080;
 
 const app = express();
 app.use(cors());
@@ -27,7 +27,7 @@ app.use("/types", typesRouter);
 // connection.connect();
 
 
-app.listen(port, () =>
+app.listen(process.env.PORT || 8080, () =>
   console.log(`Server running`)
 );
 
