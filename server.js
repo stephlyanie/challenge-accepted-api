@@ -24,7 +24,7 @@ app.use("/categories", categoriesRouter);
 const typesRouter = require("./routes/types");
 app.use("/types", typesRouter);
 
-app.listen(process.env.PORT || 8080, () =>
+app.connect(process.env.PORT || 8080, () =>
   console.log(`Server running`)
 );
 
