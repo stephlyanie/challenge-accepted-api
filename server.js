@@ -9,6 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", function(req, res) {
+  res.json(path.join(__dirname, "README.md"));
+});
+
 const challengesRouter = require("./routes/challenges");
 app.use("/challenges", challengesRouter);
 
@@ -24,7 +28,7 @@ app.use("/categories", categoriesRouter);
 const typesRouter = require("./routes/types");
 app.use("/types", typesRouter);
 
-app.connect(process.env.PORT || 8080, () =>
+app.listen(process.env.PORT || 8080, () =>
   console.log(`Server running`)
 );
 
