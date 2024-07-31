@@ -1,3 +1,4 @@
+import { Sequelize } from 'sequelize';
 require('dotenv').config()
 
 const mysql = require('mysql2');
@@ -19,7 +20,7 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
-let connection;
+// let connection;
 // if (process.env.JAWSDB_PINK_URL) {  
 //   module.exports = {
 //     client: "mysql",
