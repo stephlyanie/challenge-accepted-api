@@ -3,7 +3,7 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-// const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3306;
 
 const app = express();
 app.use(cors());
@@ -28,8 +28,8 @@ app.use("/categories", categoriesRouter);
 const typesRouter = require("./routes/types");
 app.use("/types", typesRouter);
 
-app.listen(process.env.PORT || 8080, () =>
-  console.log(`Server running`)
+app.listen(port, () =>
+  console.log(`Server running on ${port}`)
 );
 
 // Run the following commands to start the server:
