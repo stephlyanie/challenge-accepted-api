@@ -20,6 +20,7 @@ if (process.env.JAWSDB_PINK_URL) {
         idleTimeoutMillis: 30000,
         reapIntervalMillis: 1000,
         createRetryIntervalMillis: 100,
+        propagateCreateError: false,
       },
     },
   };
