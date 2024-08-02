@@ -40,13 +40,5 @@ app.use("/types", typesRouter);
 
 app.listen(port, () => console.log(`Server running on ${port}`));
 
-server.requestTimeout = 10000;
-server.headersTimeout = 10000;
-server.keepAliveTimeout = 10000;
-server.setTimeout(30000, (socket) => {
-  console.log('timeout');
-  socket.destroy();
-});
-
 // Run the following commands to start the server:
 // node server.js
