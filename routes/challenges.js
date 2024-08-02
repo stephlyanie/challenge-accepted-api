@@ -14,7 +14,7 @@ router
     // console.log('Got request');
     knex
       .transaction((trx) => {
-        knex()
+        knex("challenge")
           .transacting(trx)
           .select(
             "challenge.id",
@@ -26,7 +26,7 @@ router
             "challenge.description",
             "challenge.image_url"
           )
-          .from("challenge")
+          // .from("challenge")
           .join("user", "user.id", "challenge.created_by_id")
           .join("type", "type.id", "challenge.type_id")
           .join("category", "category.id", "type.category_id")
