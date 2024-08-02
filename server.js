@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
 });
 
 const challengesRouter = require("./routes/challenges");
-app.use("/challenges", challengesRouter);
+app.use("/challenges", timeout('5s'), bodyParser.json(), haltOnTimedout, challengesRouter);
 
 const creationsRouter = require("./routes/creations");
 app.use("/creations", creationsRouter);
