@@ -10,7 +10,7 @@ router
   .route("/")
   // Get list of challenges
   .get((req, res) => {
-    req.setTimeout(20000);
+    req.setTimeout(30000);
     console.log('Got request');
     knex
       .select(
