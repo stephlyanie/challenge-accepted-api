@@ -40,10 +40,10 @@ app.use("/types", typesRouter);
 
 app.listen(port, () => console.log(`Server running on ${port}`));
 
-server.requestTimeout = 5000;
-server.headersTimeout = 2000;
-server.keepAliveTimeout = 3000;
-server.setTimeout(10000, (socket) => {
+server.requestTimeout = 10000;
+server.headersTimeout = 10000;
+server.keepAliveTimeout = 10000;
+server.setTimeout(30000, (socket) => {
   console.log('timeout');
   socket.destroy();
 });
