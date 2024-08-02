@@ -14,7 +14,8 @@ router
     // console.log('Got request');
     knex
       .transaction((trx) => {
-        return trx
+        knex()
+          .transacting(trx)
           .select(
             "challenge.id",
             "user.username",
