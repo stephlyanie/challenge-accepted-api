@@ -13,7 +13,7 @@ if (process.env.JAWSDB_PINK_URL) {
       database: process.env.DB_NAME,
       charset: "utf8",
       pool: {
-        max: 1,
+        max: 100,
         min: 0,
         createTimeoutMillis: 3000,
         acquireTimeoutMillis: 10000,
@@ -22,6 +22,7 @@ if (process.env.JAWSDB_PINK_URL) {
         createRetryIntervalMillis: 100,
         propagateCreateError: false,
       },
+      acquireConnectionTimeout: 10000,
     },
   };
 } else {
