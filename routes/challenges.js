@@ -3,7 +3,7 @@ const router = express.Router();
 
 const config = require("../knexfile.js");
 const knex = require("knex")(config);
-const trx = await knex.transaction();
+const trx = knex.transaction();
 
 const { v4: uuidv4 } = require("uuid");
 
