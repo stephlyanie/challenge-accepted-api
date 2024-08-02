@@ -15,14 +15,15 @@ if (process.env.JAWSDB_PINK_URL) {
       pool: {
         max: 100,
         min: 0,
-        createTimeoutMillis: 3000,
+        createTimeoutMillis: 30000,
         acquireTimeoutMillis: 10000,
         idleTimeoutMillis: 30000,
         reapIntervalMillis: 1000,
         createRetryIntervalMillis: 100,
         propagateCreateError: false,
+        idleTimeoutMillis: 30000,
       },
-      acquireConnectionTimeout: 10000,
+      acquireConnectionTimeout: 30000,
     },
   };
 } else {
