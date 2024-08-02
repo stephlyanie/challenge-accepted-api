@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require('body-parser')
-const timeout = require('connect-timeout')
+// const bodyParser = require('body-parser')
+// const timeout = require('connect-timeout')
 
 require("dotenv").config();
 
@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
 });
 
 const challengesRouter = require("./routes/challenges");
-app.use("/challenges", timeout('5s'), bodyParser.json(), haltOnTimedout, challengesRouter);
+app.use("/challenges", challengesRouter);
 
 const creationsRouter = require("./routes/creations");
 app.use("/creations", creationsRouter);
@@ -39,6 +39,14 @@ const typesRouter = require("./routes/types");
 app.use("/types", typesRouter);
 
 app.listen(port, () => console.log(`Server running on ${port}`));
+
+server.requestTimeout = 5000;
+server.headersTimeout = 2000;
+server.keepAliveTimeout = 3000;
+server.setTimeout(10000, (socket) => {
+  console.log('timeout');
+  socket.destroy();
+});
 
 // Run the following commands to start the server:
 // node server.js
