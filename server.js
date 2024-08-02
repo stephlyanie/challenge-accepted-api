@@ -11,10 +11,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-function haltOnTimedout (req, res, next) {
-  if (!req.timedout) next()
-}
-
 const fs = require("fs");
 
 app.get("/", function (req, res) {
