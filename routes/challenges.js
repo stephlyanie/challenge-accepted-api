@@ -3,6 +3,7 @@ const router = express.Router();
 
 const config = require("../knexfile.js");
 const knex = require("knex")(config);
+const trx = await knex.transaction();
 
 const { v4: uuidv4 } = require("uuid");
 
@@ -12,26 +13,23 @@ router
   .get((req, res) => {
     req.setTimeout(30000);
     console.log('Got request');
-    knex
-      .transaction((trx) => {
-        return trx
-          .select(
-            "challenge.id",
-            "user.username",
-            "user.image_url as profile_pic",
-            "challenge.name",
-            "category.name as category",
-            "type.name as type",
-            "challenge.description",
-            "challenge.image_url"
-          )
-          .from("challenge")
-          .join("user", "user.id", "challenge.created_by_id")
-          .join("type", "type.id", "challenge.type_id")
-          .join("category", "category.id", "type.category_id")
-          .then((challenges) => {
-            res.status(200).json(challenges);
-          })
+    trx
+      .select(
+        "challenge.id",
+        "user.username",
+        "user.image_url as profile_pic",
+        "challenge.name",
+        "category.name as category",
+        "type.name as type",
+        "challenge.description",
+        "challenge.image_url"
+      )
+      .from("challenge")
+      .join("user", "user.id", "challenge.created_by_id")
+      .join("type", "type.id", "challenge.type_id")
+      .join("category", "category.id", "type.category_id")
+      .then((challenges) => {
+        res.status(200).json(challenges);
       })
       .catch((error) => {
         console.log(error);
