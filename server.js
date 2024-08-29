@@ -8,13 +8,15 @@ const port = process.env.PORT || 3306;
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 const fs = require("fs");
 
 app.get("/", function (req, res) {
-  fs.readFile("./README.md", "utf-8", (error, result) => {
-    res.send(result);
-  });
+ console.log('get');
+ fs.readFile("index.html", "utf-8", (error, result) => {
+ res.send(result);
+ });
 });
 
 const challengesRouter = require("./routes/challenges");
