@@ -14,7 +14,7 @@ const fs = require("fs");
 
 app.get("/", function (req, res) {
  console.log('get');
- fs.readFile("./README.md", "utf-8", (error, result) => {
+ fs.readFile("index.html", "utf-8", (error, result) => {
  res.send(result);
  });
 });
