@@ -12,6 +12,7 @@ if (process.env.JAWSDB_PINK_URL) {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       charset: "utf8",
+<<<<<<< Updated upstream
       // pool: {
       //   max: 100,
       //   min: 0,
@@ -23,7 +24,24 @@ if (process.env.JAWSDB_PINK_URL) {
       //   propagateCreateError: false,
       //   idleTimeoutMillis: 30000,
       // },
+<<<<<<< HEAD
       acquireConnectionTimeout: 30000,
+=======
+=======
+      pool: {
+        max: 100,
+        min: 0,
+        createTimeoutMillis: 30000,
+        acquireTimeoutMillis: 10000,
+        idleTimeoutMillis: 30000,
+        reapIntervalMillis: 1000,
+        createRetryIntervalMillis: 100,
+        propagateCreateError: false,
+        idleTimeoutMillis: 30000,
+      },
+      acquireConnectionTimeout: 30000,
+>>>>>>> Stashed changes
+>>>>>>> develop
     },
   };
 } else {
